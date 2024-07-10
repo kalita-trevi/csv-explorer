@@ -32,7 +32,7 @@ class App:
         self.filter_frame = ttk.Frame(self.frame)
         self.filter_frame.pack(side=tk.TOP, pady=5)
 
-        self.filter_entry = PlaceholderEntry(self.filter_frame, placeholder="Clique aqui para pesquisar", width=40,
+        self.filter_entry = PlaceholderEntry(self.filter_frame, placeholder="Clique aqui para filtrar", width=40,
                                              bootstyle="success")
         self.filter_entry.pack(side=tk.LEFT, padx=5)
 
@@ -61,8 +61,8 @@ class App:
         self.treeview = ttk.Treeview(self.table_frame, columns=columns, show="headings")
 
         for col in columns:
-            self.treeview.heading(col, text=col)
-            self.treeview.column(col, width=100)
+            self.treeview.heading(col, text=col, anchor=tk.W)
+            self.treeview.column(col, width=100, anchor=tk.W)
 
         for index, row in df.iterrows():
             self.treeview.insert("", tk.END, values=list(row))
